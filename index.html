@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RC Calculators – Info</title>
+  <style>
+    /* === HEADER & FOOTER STYLES FROM YOUR CODE === */
+    .site-header {
+      background-color: #003366;
+      color: #f9f9f9;
+      margin-bottom: 20px;
+    }
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 5px 15px;
+    }
+    .image-button {
+      display: inline-block;
+      padding: 2px;
+      border-radius: 8px;
+      background-color: white;
+      transition: background-color 0.2s;
+      text-decoration: none;
+    }
+    .button-image {
+      height: 45px;
+      width: 45px;
+      object-fit: contain;
+      vertical-align: middle;
+      border-radius: 8px;
+    }
+    .image-button:hover {
+      background-color: #e0e0e0;
+    }
+    .site-footer {
+      background-color: #f3a26d;
+      color: white;
+      text-align: center;
+      padding: 10px 10px;
+      margin-top: 80px;
+      font-size: 14px;
+    }
+
+    /* === INFO PAGE STYLES (MERGED WITH YOUR BASE THEME) === */
+    body {
+      font-family: Arial, sans-serif;
+      margin-bottom: 20px;
+      background-color: #f9f9f9;
+      color: #0f172a;
+      line-height: 1.5;
+    }
+    .page-content {
+      max-width: 960px;
+      margin: auto;
+      padding: 0 20px;
+    }
+    h1 {
+      font-size: clamp(1.6rem, 2vw, 2rem);
+      margin: 0 0 12px;
+    }
+    h2 {
+      font-size: clamp(1.2rem, 1.5vw, 1.4rem);
+      margin: 28px 0 10px;
+    }
+    p {
+      margin: 0 0 10px;
+    }
+    .lead {
+      font-size: 1.025rem;
+      color: #475569;
+    }
+    .card {
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 18px;
+      margin: 16px 0;
+      background: #fff;
+    }
+    details {
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      background: #fff;
+      margin: 10px 0;
+      overflow: hidden;
+    }
+    summary {
+      cursor: pointer;
+      list-style: none;
+      padding: 14px 16px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    summary::-webkit-details-marker {
+      display: none;
+    }
+    .badge {
+      font-size: .75rem;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 9999px;
+      background: #eef2ff;
+      border: 1px solid #c7d2fe;
+    }
+    .panel {
+      padding: 0 16px 14px;
+    }
+    .kv {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px 18px;
+      margin: 12px 0;
+    }
+    .kv dt {
+      font-weight: 600;
+      color: #475569;
+    }
+    .kv dd {
+      margin: 0;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    }
+    @media (max-width:700px) {
+      .kv {
+        grid-template-columns: 1fr;
+      }
+    }
+    .section-note {
+      font-size: .95rem;
+      color: #475569;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="header-content">
+      <div>
+        <h1>REINFORCED CONCRETE CALCULATOR</h1>
+      </div>
+        <a href="https://obracewell.github.io/RCBeamCalculator/" class="image-button">
+        <img src="https://raw.githubusercontent.com/obracewell/RCBeamAnalysisCalculator-SRB/refs/heads/main/assets/homebutton.png"
+             alt="Button Icon"
+             class="button-image">
+      </a>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <div class="page-content">
+    <h1>About These RC Calculators</h1>
+
+    <div style="max-width: 800px; margin: 0 auto; text-align: left;">
+    <p>
+        This website features interactive calculators designed to support reinforced concrete (RC) beam and column design and analysis. 
+        It includes tools for three common RC beam types: singly reinforced beams (SRB), T-beams, and doubly reinforced beams (DRB). It also
+        provides design calculators for square and circular RC columns. Reference tables commonly used in RC analysis and desgin are provided. 
+    </p>
+    </div>
+    <div style="max-width: 800px; margin: 0 auto; text-align: left;">
+    <p>
+        For the beam analysis calculators, users can input design parameters and instantly visualize how those values affect beam strength. 
+        The goal is to provide an intuitive way to understand structural behavior and the impact of design decisions.
+    </p>
+    </div>
+    <div style="max-width: 800px; margin: 0 auto; text-align: left;">
+    <p>
+        For the beam design calculators, users can input the known design parameters and design the reinforcing steel for their beam. 
+        The goal is to show that multiple options will produce the desired strength and provide a starting point for exploring optimized designs.
+    </p>
+    </div>
+    <div style="max-width: 800px; margin: 0 auto; text-align: left;">
+    <p>
+        For the column design calculators, users can select parameters to determine the required cross-sectional concrete area and reinforcing 
+        steel for square or circular columns. These tools guide the selection of bar arrangements that satisfy design requirements and allow 
+        users to explore viable design options.
+    </p>
+
+    <h2>Getting Started? Try these Test Values</h2>
+    
+
+    <!-- SRB Analysis -->
+    <details>
+      <summary><span class="badge">Analysis</span> SRB (Singly Reinforced Beam)</summary>
+      <div class="panel">
+        <dl class="kv">
+          <dt>f’c</dt><dd>5000 psi</dd>
+          <dt>fy</dt><dd>60000 psi</dd>
+          <dt>As</dt><dd>3.61 in²</dd>
+          <dt>d</dt><dd>22 in</dd>
+          <dt>b</dt><dd>12 in</dd>
+        </dl>
+      </div>
+    </details>
+
+    <!-- T-Beam Analysis -->
+    <details>
+      <summary><span class="badge">Analysis</span> T‑Beam</summary>
+      <div class="panel">
+        <dl class="kv">
+          <dt>f’c</dt><dd>4000 psi</dd>
+          <dt>fy</dt><dd>60000 psi</dd>
+          <dt>As</dt><dd>4#14</dd>
+          <dt>d</dt><dd>24 in</dd>
+          <dt>bw</dt><dd>16 in</dd>
+          <dt>beff</dt><dd>36 in</dd>
+          <dt>hf</dt><dd>3 in</dd>
+        </dl>
+      </div>
+    </details>
+
+    <!-- DRB Analysis -->
+    <details>
+      <summary><span class="badge">Analysis</span> DRB (Doubly Reinforced Beam)</summary>
+      <div class="panel">
+        <dl class="kv">
+          <dt>f’c</dt><dd>4000 psi</dd>
+          <dt>fy</dt><dd>60000 psi</dd>
+          <dt>As</dt><dd>4#11 in 1 row</dd>
+          <dt>As’</dt><dd>4#9</dd>
+          <dt>d</dt><dd>28 in</dd>
+          <dt>d’</dt><dd>2.5 in</dd>
+          <dt>b</dt><dd>16 in</dd>
+        </dl>
+      </div>
+    </details>
+
+    <!-- SRB Design -->
+    <details>
+      <summary><span class="badge">Design</span> SRB</summary>
+      <div class="panel">
+        <dl class="kv">
+          <dt>f’c</dt><dd>4000 psi</dd>
+          <dt>fy</dt><dd>60000 psi</dd>
+          <dt>d</dt><dd>25.5 in</dd>
+          <dt>b</dt><dd>14 in</dd>
+          <dt>Mu</dt><dd>450 k·ft</dd>
+        </dl>
+      </div>
+    </details>
+
+    <!-- T-Beam Design -->
+    <details>
+      <summary><span class="badge">Design</span> T‑Beam</summary>
+      <div class="panel">
+        <dl class="kv">
+          <dt>f’c</dt><dd>4000 psi</dd>
+          <dt>fy</dt><dd>60000 psi</dd>
+          <dt>d</dt><dd>30 in</dd>
+          <dt>bw</dt><dd>12 in</dd>
+          <dt>beff</dt><dd>48 in</dd>
+          <dt>hf</dt><dd>4 in</dd>
+          <dt>Mu</dt><dd>1040 k·ft</dd>
+        </dl>
+      </div>
+    </details>
+
+    <!-- DRB Design -->
+    <details>
+      <summary><span class="badge">Design</span> DRB</summary>
+      <div class="panel">
+        <dl class="kv">
+          <dt>f’c</dt><dd>4000 psi</dd>
+          <dt>fy</dt><dd>60000 psi</dd>
+          <dt>d</dt><dd>26 in</dd>
+          <dt>d’</dt><dd>3 in</dd>
+          <dt>b</dt><dd>14 in</dd>
+          <dt>Mu</dt><dd>900 k·ft</dd>
+        </dl>
+      </div>
+    </details>
+
+    <!-- Square Column Design -->
+    <details>
+      <summary><span class="badge">Design</span> Square Column</summary>
+      <div class="panel">
+        <dl class="kv">
+          <dt>f’c</dt><dd>4000 psi</dd>
+          <dt>fy</dt><dd>60000 psi</dd>
+          <dt>Pu</dt><dd>1160 k</dd>
+          <dt>ρ (Rho)</dt><dd>3%</dd>
+        </dl>
+      </div>
+    </details>
+
+    <!-- Circular Column Design -->
+    <details>
+      <summary><span class="badge">Design</span> Circular Column</summary>
+      <div class="panel">
+        <dl class="kv">
+          <dt>f’c</dt><dd>4000 psi</dd>
+          <dt>fy</dt><dd>60000 psi</dd>
+          <dt>PD</dt><dd>400 k</dd>
+          <dt>PL</dt><dd>250 k</dd>
+          <dt>ρ (Rho)</dt><dd>3%</dd>
+          <dt>Confinement</dt><dd>Spiral</dd>
+        </dl>
+      </div>
+    </details>
+    </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <p>Reinforced Concrete Calculator created by Olivia Bracewell, UF Herbert Wertheim College of Engineering</p>
+  </footer>
+
+  <!-- Optional: Single-open accordion -->
+  <script>
+    document.querySelectorAll('details').forEach(d=>{
+      d.addEventListener('toggle', e=>{
+        if(d.open){
+          document.querySelectorAll('details').forEach(o=>{ if(o!==d) o.removeAttribute('open'); });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
