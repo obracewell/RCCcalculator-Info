@@ -5,58 +5,74 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>RC Calculators – Info</title>
   <style>
-    /* === HEADER & FOOTER STYLES (unchanged) === */
+    /* === HEADER (from your preferred version, lightly scoped) === */
     .site-header {
-            background-color: #003366;
-            color: #f9f9f9;
-            margin-bottom: 20px;
-        }
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 5px 15px;
-        }
-        .image-button {
-            display: inline-block;
-            padding: 2px;
-            border-radius: 8px;
-            background-color: white;
-            transition:background-color 0.2s;
-            text-decoration: none;
-        }
-        .button-image {
-            height: 45px;
-            width: 45px;
-            object-fit: contain;
-            vertical-align: middle;
-            border-radius: 8px;
-        }
-        .button-group {
-            display: flex;
-            gap: 15px; 
-        }
-        .image-button:hover {
-            background-color: #e0e0e0;
-        }
-        .site-footer {
-            background-color: #f3a26d;
-            color: white;
-            text-align: center;
-            padding: 10px 10px;
-            margin-top: 240px;
-            font-size: 14px;
-        }
-    
+      background-color: #003366;
+      color: #f9f9f9;
+      margin-bottom: 20px;
+    }
+    .site-header .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 20px;     /* a touch more breathing room */
+      max-width: 960px;      /* align with page width */
+      margin: 0 auto;
+    }
+    .image-button {
+      display: inline-block;
+      padding: 2px;
+      border-radius: 8px;
+      background-color: white;
+      transition: background-color 0.2s;
+      text-decoration: none;
+    }
+    .button-image {
+      height: 45px;
+      width: 45px;
+      object-fit: contain;
+      vertical-align: middle;
+      border-radius: 8px;
+    }
+    .button-group { display: flex; gap: 15px; }
+    .image-button:hover { background-color: #e0e0e0; }
+    .site-header h1 {         /* prevent global h1 centering from affecting header */
+      margin: 0;
+      font-size: 1.25rem;     /* adjust as you like */
+      line-height: 1.2;
+      letter-spacing: .02em;
+      text-align: left;
+    }
+
+    /* === FOOTER === */
+    .site-footer {
+      background-color: #f3a26d;
+      color: white;
+      text-align: center;
+      padding: 10px 10px;
+      margin-top: 240px;
+      font-size: 14px;
+    }
+
     /* === PAGE STYLES === */
-    body { font-family: Arial, sans-serif; margin-bottom:20px; background-color:#f9f9f9; color:#0f172a; line-height:1.5; }
-    .page-content { max-width:960px; margin:auto; padding:0 20px; }
-    h1 { font-size:clamp(1.6rem,2vw,2rem); margin:0 0 12px; text-align:center; }
-    h2 { font-size:clamp(1.2rem,1.5vw,1.4rem); margin:28px 0 10px; text-align:left; }
+    body { font-family: Arial, sans-serif; background-color:#f9f9f9; color:#0f172a; line-height:1.5; margin:0; }
+    .page-content { max-width:960px; margin:auto; padding:0 20px 20px; }
+
+    /* Center ONLY the main page title, not the header title */
+    .page-content > h1 {
+      font-size: clamp(1.6rem, 2vw, 2rem);
+      margin: 16px 0 12px;
+      text-align: center;
+    }
+    h2 {
+      font-size: clamp(1.2rem, 1.5vw, 1.4rem);
+      margin: 28px 0 10px;
+      text-align: left; /* you wanted this aligned with the accordions */
+    }
 
     .card {
       border:1px solid #e2e8f0; border-radius:12px; padding:18px; margin:16px auto; background:#fff;
-      max-width:800px; text-align:left; /* ← left-justify intro text */
+      max-width:800px; text-align:left;
     }
 
     /* Accordions */
@@ -65,59 +81,52 @@
       cursor:pointer; list-style:none; padding:14px 16px; font-weight:600; display:flex; align-items:center; gap:10px;
     }
     summary::-webkit-details-marker { display:none; }
-    /* Right-edge caret */
     summary::after { content:"▼"; margin-left:auto; transition: transform .2s ease; }
     details[open] summary::after { transform: rotate(180deg); }
 
-    /* Badge (themeable via CSS variables) */
+    /* Badges */
     .badge {
-      --badge-bg:#eef2ff;
-      --badge-border:#c7d2fe;
-      --badge-fg:#1f2937;
+      --badge-bg:#eef2ff; --badge-border:#c7d2fe; --badge-fg:#1f2937;
       font-size:.75rem; font-weight:600; padding:2px 8px; border-radius:9999px;
       background: var(--badge-bg); border:1px solid var(--badge-border); color: var(--badge-fg);
     }
-    /* Your color scheme */
     .badge-beam-analysis { --badge-bg:#AEC9A3; --badge-border:#AEC9A3; --badge-fg:#0f172a; }
     .badge-beam-design  { --badge-bg:#B6CCD7; --badge-border:#B6CCD7; --badge-fg:#0f172a; }
     .badge-column-design{ --badge-bg:#E5B9B9; --badge-border:#E5B9B9; --badge-fg:#0f172a; }
 
     .panel { padding:0 16px 14px; }
 
+    /* Two-column variable/value layout (20/80) with left-aligned values */
     .kv {
       display:grid;
       grid-template-columns: 20% 80%;
-      gap: 6px 18px;             
+      gap: 6px 18px;
       margin:12px 0;
     }
     .kv dt { margin:0; font-weight:600; color:#475569; font-family: inherit; }
-    .kv dd { margin:0; font-family: inherit; text-align: left } /* ensure same font for numbers */
-    @media (max-width:700px){
-      .kv { grid-template-columns: 1fr 1fr; }  
-    }
+    .kv dd { margin:0; font-family: inherit; text-align: left; }
+    @media (max-width:700px){ .kv { grid-template-columns: 1fr 1fr; } }
 
     .section-note { font-size:.95rem; color:#475569; text-align:center; }
   </style>
 </head>
 <body>
-  <!-- HEADER -->
+  <!-- HEADER: your preferred version -->
   <header class="site-header">
-        <div class="header-content">
-            <div>
-              <h1>REINFORCED CONCRETE CALCULATOR</h1>
-          </div>
-          <div class="button-group">
-            <a href="https://obracewell.github.io/RCCcalculator-Info/" class="image-button" title="Info Page">
-                <img src="https://raw.githubusercontent.com/obracewell/RCBeamCalculator/refs/heads/main/assets/infobuttonn.png" 
-                     alt="Info Button Icon" class="button-image">
-            </a>
-            <a href="https://obracewell.github.io/RCBeamCalculator/" class="image-button" title="Home">
-                <img src="https://raw.githubusercontent.com/obracewell/RCBeamCalculator/refs/heads/main/assets/homebuttonn.png" 
-                     alt="Home Button Icon" class="button-image">
-            </a>
-            </div> 
-        </div>
-    </header>
+    <div class="header-content">
+      <div>
+        <h1>REINFORCED CONCRETE CALCULATOR</h1>
+      </div>
+      <div class="button-group">
+        <a href="https://obracewell.github.io/RCCcalculator-Info/" class="image-button" title="Info Page">
+          <img src="https://raw.githubusercontent.com/obracewell/RCBeamCalculator/refs/heads/main/assets/infobuttonn.png" alt="Info Button Icon" class="button-image">
+        </a>
+        <a href="https://obracewell.github.io/RCBeamCalculator/" class="image-button" title="Home">
+          <img src="https://raw.githubusercontent.com/obracewell/RCBeamCalculator/refs/heads/main/assets/homebuttonn.png" alt="Home Button Icon" class="button-image">
+        </a>
+      </div>
+    </div>
+  </header>
 
   <!-- MAIN CONTENT -->
   <div class="page-content">
@@ -144,17 +153,17 @@
     </div>
 
     <h2>Getting Started? Try these Test Values</h2>
-    
+
     <!-- 1) SRB Analysis — Beam Analysis color -->
     <details>
-      <summary><span class="badge badge-beam-analysis">Analysis</span> SRB </summary>
+      <summary><span class="badge badge-beam-analysis">Analysis</span> SRB</summary>
       <div class="panel">
         <dl class="kv">
-          <dt>f’<sub>c</sub></dt><dd>= 5000 psi</dd>
-          <dt>f<sub>y</sub></dt><dd>= 60000 psi</dd>
-          <dt>A<sub>s</sub></dt><dd>= 3.61 in²</dd>
-          <dt>d</dt><dd>= 22 in</dd>
-          <dt>b</dt><dd>= 12 in</dd>
+          <dt>f’<sub>c</sub></dt><dd>5000 psi</dd>
+          <dt>f<sub>y</sub></dt><dd>60000 psi</dd>
+          <dt>A<sub>s</sub></dt><dd>3.61 in²</dd>
+          <dt>d</dt><dd>22 in</dd>
+          <dt>b</dt><dd>12 in</dd>
         </dl>
       </div>
     </details>
@@ -164,29 +173,29 @@
       <summary><span class="badge badge-beam-analysis">Analysis</span> T‑Beam</summary>
       <div class="panel">
         <dl class="kv">
-          <dt>f’<sub>c</sub></dt><dd>= 4000 psi</dd>
-          <dt>f<sub>y</sub></dt><dd>= 60000 psi</dd>
-          <dt>A<sub>s</sub></dt><dd>= 4#14</dd>
-          <dt>d</dt><dd>= 24 in</dd>
-          <dt>b<sub>w</sub></dt><dd>= 16 in</dd>
-          <dt>b<sub>eff</sub></dt><dd>= 36 in</dd>
-          <dt>h<sub>f</sub></dt><dd>= 3 in</dd>
+          <dt>f’<sub>c</sub></dt><dd>4000 psi</dd>
+          <dt>f<sub>y</sub></dt><dd>60000 psi</dd>
+          <dt>A<sub>s</sub></dt><dd>4#14</dd>
+          <dt>d</dt><dd>24 in</dd>
+          <dt>b<sub>w</sub></dt><dd>16 in</dd>
+          <dt>b<sub>eff</sub></dt><dd>36 in</dd>
+          <dt>h<sub>f</sub></dt><dd>3 in</dd>
         </dl>
       </div>
     </details>
 
     <!-- 3) DRB Analysis — Beam Analysis color -->
     <details>
-      <summary><span class="badge badge-beam-analysis">Analysis</span> DRB </summary>
+      <summary><span class="badge badge-beam-analysis">Analysis</span> DRB</summary>
       <div class="panel">
         <dl class="kv">
-          <dt>f’<sub>c</sub></dt><dd>= 4000 psi</dd>
-          <dt>f<sub>y</sub></dt><dd>= 60000 psi</dd>
-          <dt>A<sub>s</sub></dt><dd>= 4#11</dd>
-          <dt>A'<sub>s</sub></dt><dd>= 4#9</dd>
-          <dt>d</dt><dd>= 28 in</dd>
-          <dt>d’</dt><dd>= 2.5 in</dd>
-          <dt>b</dt><dd>= 16 in</dd>
+          <dt>f’<sub>c</sub></dt><dd>4000 psi</dd>
+          <dt>f<sub>y</sub></dt><dd>60000 psi</dd>
+          <dt>A<sub>s</sub></dt><dd>4#11 in 1 row</dd>
+          <dt>A'<sub>s</sub></dt><dd>4#9</dd>
+          <dt>d</dt><dd>28 in</dd>
+          <dt>d’</dt><dd>2.5 in</dd>
+          <dt>b</dt><dd>16 in</dd>
         </dl>
       </div>
     </details>
@@ -196,11 +205,11 @@
       <summary><span class="badge badge-beam-design">Design</span> SRB</summary>
       <div class="panel">
         <dl class="kv">
-          <dt>f’<sub>c</sub></dt><dd>= 4000 psi</dd>
-          <dt>f<sub>y</sub></dt><dd>= 60000 psi</dd>
-          <dt>d</dt><dd>= 25.5 in</dd>
-          <dt>b</dt><dd>= 14 in</dd>
-          <dt>M<sub>u</sub></dt><dd>= 450 k·ft</dd>
+          <dt>f’<sub>c</sub></dt><dd>4000 psi</dd>
+          <dt>f<sub>y</sub></dt><dd>60000 psi</dd>
+          <dt>d</dt><dd>25.5 in</dd>
+          <dt>b</dt><dd>14 in</dd>
+          <dt>M<sub>u</sub></dt><dd>450 k·ft</dd>
         </dl>
       </div>
     </details>
@@ -210,13 +219,13 @@
       <summary><span class="badge badge-beam-design">Design</span> T‑Beam</summary>
       <div class="panel">
         <dl class="kv">
-          <dt>f’<sub>c</sub></dt><dd>= 4000 psi</dd>
-          <dt>f<sub>y</sub></dt><dd>= 60000 psi</dd>
-          <dt>d</dt><dd>= 30 in</dd>
-          <dt>b<sub>w</sub></dt><dd>= 12 in</dd>
-          <dt>b<sub>eff</sub></dt><dd>= 48 in</dd>
-          <dt>h<sub>f</sub></dt><dd>= 4 in</dd>
-          <dt>M<sub>u</sub></dt><dd>= 1040 k·ft</dd>
+          <dt>f’<sub>c</sub></dt><dd>4000 psi</dd>
+          <dt>f<sub>y</sub></dt><dd>60000 psi</dd>
+          <dt>d</dt><dd>30 in</dd>
+          <dt>b<sub>w</sub></dt><dd>12 in</dd>
+          <dt>b<sub>eff</sub></dt><dd>48 in</dd>
+          <dt>h<sub>f</sub></dt><dd>4 in</dd>
+          <dt>M<sub>u</sub></dt><dd>1040 k·ft</dd>
         </dl>
       </div>
     </details>
@@ -226,12 +235,12 @@
       <summary><span class="badge badge-beam-design">Design</span> DRB</summary>
       <div class="panel">
         <dl class="kv">
-          <dt>f’<sub>c</sub></dt><dd>= 4000 psi</dd>
-          <dt>f<sub>y</sub></dt><dd>= 60000 psi</dd>
-          <dt>d</dt><dd>= 26 in</dd>
-          <dt>d’</dt><dd>= 3 in</dd>
-          <dt>b</dt><dd>= 14 in</dd>
-          <dt>M<sub>u</sub></dt><dd>= 900 k·ft</dd>
+          <dt>f’<sub>c</sub></dt><dd>4000 psi</dd>
+          <dt>f<sub>y</sub></dt><dd>60000 psi</dd>
+          <dt>d</dt><dd>26 in</dd>
+          <dt>d’</dt><dd>3 in</dd>
+          <dt>b</dt><dd>14 in</dd>
+          <dt>M<sub>u</sub></dt><dd>900 k·ft</dd>
         </dl>
       </div>
     </details>
@@ -241,10 +250,10 @@
       <summary><span class="badge badge-column-design">Design</span> Square Column</summary>
       <div class="panel">
         <dl class="kv">
-          <dt>f’<sub>c</sub></dt><dd>= 4000 psi</dd>
-          <dt>f<sub>y</sub></dt><dd>= 60000 psi</dd>
-          <dt>P<sub>u</sub></dt><dd>= 1160 k</dd>
-          <dt>ρ</dt><dd>= 3%</dd>
+          <dt>f’<sub>c</sub></dt><dd>4000 psi</dd>
+          <dt>f<sub>y</sub></dt><dd>60000 psi</dd>
+          <dt>P<sub>u</sub></dt><dd>1160 k</dd>
+          <dt>ρ</dt><dd>3%</dd>
         </dl>
       </div>
     </details>
@@ -254,11 +263,11 @@
       <summary><span class="badge badge-column-design">Design</span> Circular Column</summary>
       <div class="panel">
         <dl class="kv">
-          <dt>f’<sub>c</sub></dt><dd>= 4000 psi</dd>
-          <dt>f<sub>y</sub></dt><dd>= 60000 psi</dd>
-          <dt>P<sub>D</sub></dt><dd>= 400 k</dd>
-          <dt>P<sub>L</sub></dt><dd>= 250 k</dd>
-          <dt>ρ</dt><dd>= 3%</dd>
+          <dt>f’<sub>c</sub></dt><dd>4000 psi</dd>
+          <dt>f<sub>y</sub></dt><dd>60000 psi</dd>
+          <dt>P<sub>D</sub></dt><dd>400 k</dd>
+          <dt>P<sub>L</sub></dt><dd>250 k</dd>
+          <dt>ρ</dt><dd>3%</dd>
           <dt>Confinement</dt><dd>Spiral</dd>
         </dl>
       </div>
